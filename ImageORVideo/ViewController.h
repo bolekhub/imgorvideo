@@ -1,0 +1,14 @@
+//
+//  ViewController.h
+//  ImageORVideo
+//
+//  Created by Boris Chirino on 4/8/22.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController
+
+
+@end
+
