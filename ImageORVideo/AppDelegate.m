@@ -6,19 +6,31 @@
 //
 
 #import "AppDelegate.h"
+#import "ImageCache.h"
+#import "Network.h"
+
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+Network *service;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [ImageCache setup];
+    /*
+    [service getFromULR:@"https://placehold.jp/150x150.png" completionHandler:^(NSData * _Nullable data) {
+        UIImage *img = [UIImage imageWithData:data];
+        NSLog(@"finish");
+    }];
+     */
+//    NSTimeInterval time = [[NSDate date] timeIntervalSinceNow];
+//    [self performSelector:@selector(test) withObject:nil afterDelay: time+8];
+        
     return YES;
 }
-
 
 #pragma mark - UISceneSession lifecycle
 
@@ -36,5 +48,11 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
+- (void)test {
+    [service getFromULR:@"https://placehold.jp/150x150.png" completionHandler:^(NSData * _Nullable data) {
+        UIImage *img = [UIImage imageWithData:data];
+        NSLog(@"finish");
+    }];
+}
 
 @end

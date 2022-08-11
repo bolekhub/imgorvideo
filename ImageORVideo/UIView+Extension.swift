@@ -1,7 +1,9 @@
 
 
-extension UIView {
-    public func fullFit(topMargin: CGFloat = 0, bottomMargin: CGFloat = 0, leftMargin: CGFloat = 0, rightMargin: CGFloat = 0) {
+
+public extension UIView {
+    @objc
+    func fullFit(topMargin: CGFloat = 0, bottomMargin: CGFloat = 0, leftMargin: CGFloat = 0, rightMargin: CGFloat = 0) {
         guard let container = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -11,4 +13,8 @@ extension UIView {
             self.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -bottomMargin)
         ])
     }
+}
+
+public class Person {
+    
 }

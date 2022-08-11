@@ -9,8 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AnimationView : UIView
-
+@interface AnimationView: UIView
+- (void) playVideoAtURL:(NSURL*)url;
 @end
 
 NS_ASSUME_NONNULL_END

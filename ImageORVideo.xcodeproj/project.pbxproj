@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0771F6EE28A13E9400CCEDE0 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880841289DD43500C61F49 /* Network.m */; };
+		0771F6F328A3B17400CCEDE0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */; };
 		07880805289BB96F00C61F49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880804289BB96F00C61F49 /* AppDelegate.m */; };
 		07880808289BB96F00C61F49 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880807289BB96F00C61F49 /* SceneDelegate.m */; };
 		0788080B289BB96F00C61F49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788080A289BB96F00C61F49 /* ViewController.m */; };
@@ -17,6 +19,8 @@
 		07880820289BB97400C61F49 /* ImageORVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788081F289BB97400C61F49 /* ImageORVideoTests.m */; };
 		0788082A289BB97400C61F49 /* ImageORVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880829289BB97400C61F49 /* ImageORVideoUITests.m */; };
 		0788082C289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788082B289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m */; };
+		0788083B289BBA2500C61F49 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788083A289BBA2500C61F49 /* AnimationView.m */; };
+		0788083F289BC08500C61F49 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788083E289BC08500C61F49 /* ImageCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0771F6F128A3B17200CCEDE0 /* ImageORVideo-Bridging-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageORVideo-Bridging-Swift.h"; sourceTree = "<group>"; };
+		0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		07880800289BB96F00C61F49 /* ImageORVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageORVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07880803289BB96F00C61F49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07880804289BB96F00C61F49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +60,12 @@
 		07880825289BB97400C61F49 /* ImageORVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageORVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07880829289BB97400C61F49 /* ImageORVideoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageORVideoUITests.m; sourceTree = "<group>"; };
 		0788082B289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageORVideoUITestsLaunchTests.m; sourceTree = "<group>"; };
+		07880839289BBA2500C61F49 /* AnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
+		0788083A289BBA2500C61F49 /* AnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
+		0788083D289BC08500C61F49 /* ImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		0788083E289BC08500C61F49 /* ImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
+		07880840289DD43500C61F49 /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		07880841289DD43500C61F49 /* Network.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0771F6F028A3AE7300CCEDE0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */,
+				0771F6F128A3B17200CCEDE0 /* ImageORVideo-Bridging-Swift.h */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		078807F7289BB96F00C61F49 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +125,9 @@
 		07880802289BB96F00C61F49 /* ImageORVideo */ = {
 			isa = PBXGroup;
 			children = (
+				0771F6F028A3AE7300CCEDE0 /* Extensions */,
+				0788083C289BC05E00C61F49 /* Classes */,
+				07880838289BB9EA00C61F49 /* ViewComponents */,
 				07880803289BB96F00C61F49 /* AppDelegate.h */,
 				07880804289BB96F00C61F49 /* AppDelegate.m */,
 				07880806289BB96F00C61F49 /* SceneDelegate.h */,
@@ -134,6 +158,26 @@
 				0788082B289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m */,
 			);
 			path = ImageORVideoUITests;
+			sourceTree = "<group>";
+		};
+		07880838289BB9EA00C61F49 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				07880839289BBA2500C61F49 /* AnimationView.h */,
+				0788083A289BBA2500C61F49 /* AnimationView.m */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		0788083C289BC05E00C61F49 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0788083D289BC08500C61F49 /* ImageCache.h */,
+				0788083E289BC08500C61F49 /* ImageCache.m */,
+				07880840289DD43500C61F49 /* Network.h */,
+				07880841289DD43500C61F49 /* Network.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +247,7 @@
 				TargetAttributes = {
 					078807FF289BB96F00C61F49 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					0788081A289BB97400C61F49 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -266,10 +311,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0771F6EE28A13E9400CCEDE0 /* Network.m in Sources */,
 				0788080B289BB96F00C61F49 /* ViewController.m in Sources */,
+				0771F6F328A3B17400CCEDE0 /* UIView+Extension.swift in Sources */,
 				07880805289BB96F00C61F49 /* AppDelegate.m in Sources */,
 				07880816289BB97300C61F49 /* main.m in Sources */,
 				07880808289BB96F00C61F49 /* SceneDelegate.m in Sources */,
+				0788083F289BC08500C61F49 /* ImageCache.m in Sources */,
+				0788083B289BBA2500C61F49 /* AnimationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,8 +491,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VVU2BQZ6F9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageORVideo/Info.plist;
@@ -460,6 +511,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bcf.ImageORVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ImageORVideo/ImageORVideo-Bridging-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -469,8 +523,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VVU2BQZ6F9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageORVideo/Info.plist;
@@ -487,6 +543,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bcf.ImageORVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ImageORVideo/ImageORVideo-Bridging-Swift.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -494,6 +552,7 @@
 		07880833289BB97400C61F49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -512,6 +571,7 @@
 		07880834289BB97400C61F49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -530,6 +590,7 @@
 		07880836289BB97400C61F49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VVU2BQZ6F9;
@@ -546,6 +607,7 @@
 		07880837289BB97400C61F49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VVU2BQZ6F9;
