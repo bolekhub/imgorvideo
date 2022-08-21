@@ -5,11 +5,11 @@
 //  Created by Boris Chirino on 4/8/22.
 //
 
-#import "ImageCache.h"
+#import "DataCache.h"
 #import "Network.h"
 #import <UIKit/UIKit.h>
 
-@interface ImageCache ()
+@interface DataCache ()
 
 @property (nonatomic, strong, nonnull) NSCache *cache;
 
@@ -17,13 +17,13 @@
 
 @end
 
-@implementation ImageCache
+@implementation DataCache
 
 + (instancetype) shared {
-    static ImageCache *sharedInstance = nil;
+    static DataCache *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[ImageCache alloc] init];
+        sharedInstance = [[DataCache alloc] init];
     });
 
     return sharedInstance;
@@ -48,23 +48,24 @@
 }
 
 + (void)setup {
-    [[ImageCache shared] loadPersistedDataCache];
+    [[DataCache shared] loadPersistedDataCache];
 }
 
 + (void)setData:(NSData*)data forKey:(NSString*)key {
-    [[ImageCache shared].cacheKeys addObject:key];
-    [[ImageCache shared].cache setObject:data forKey:key];
+    [[DataCache shared].cacheKeys addObject:key];
+    [[DataCache shared].cache setObject:data forKey:key];
+    [[DataCache shared] savecache];
 }
 
 + (NSData*)dataForKey:(NSString*)key {
-   return [[ImageCache shared].cache objectForKey:key];
+   return [[DataCache shared].cache objectForKey:key];
 }
 
 - (void)savecache {
     NSError *error;
     NSMutableDictionary *toDiskCache = [NSMutableDictionary dictionary];
     
-    for (NSString *key in [ImageCache shared].cacheKeys) {
+    for (NSString *key in [DataCache shared].cacheKeys) {
         NSData *data = [self.cache objectForKey:key];
         if (data) {
             [toDiskCache setValue:data forKey:key];

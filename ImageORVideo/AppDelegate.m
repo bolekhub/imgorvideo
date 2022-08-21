@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ImageCache.h"
+#import "DataCache.h"
 #import "Network.h"
 
 
@@ -19,7 +19,7 @@ Network *service;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [ImageCache setup];
+    [DataCache setup];
     /*
     [service getFromULR:@"https://placehold.jp/150x150.png" completionHandler:^(NSData * _Nullable data) {
         UIImage *img = [UIImage imageWithData:data];

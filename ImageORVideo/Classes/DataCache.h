@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ImageCache : NSObject
+@interface DataCache : NSObject
 + (void)setData:(NSData*)data forKey:(NSString*)key;
 + (NSData*)dataForKey:(NSString*)key;
 + (void)setup;

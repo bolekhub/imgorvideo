@@ -9,34 +9,25 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ImageORVideo-Swift.h"
 
-#import "ImageCache.h"
-
+#import "DataCache.h"
+#import "UIImageView+Network.h"
+#import "PlayerView.h"
 
 @interface AnimationView (PRIVATE)
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIView *videoView;
-
+@property (nonatomic, strong) PlayerView *playerView;
 @end
 
-//@synthesize imageView = _imageView;
 @implementation AnimationView
-    AVPlayer *_videoPlayer;
-    AVPlayerLayer *_videoPlayerLayer;
     UIImageView *_imageView;
-    UIView *_videoView;
+    PlayerView *_playerView;
+    NSArray *imageExtensions = @[@"png", @"jpg", @"tiff", @"gif"];
+    NSArray *videoExtensions = @[@"mp4", @"avi", @"mpg"];
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
     }
     return self;
 }
@@ -44,10 +35,10 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        [self addSubview:self.videoView];
+        [self addSubview:self.playerView];
         [self addSubview:self.imageView];
-        [self.videoView fullFitWithTopMargin:0 bottomMargin:0 leftMargin:0 rightMargin:0];
         [self.imageView fullFitWithTopMargin:0 bottomMargin:0 leftMargin:0 rightMargin:0];
+        [self.playerView fullFitWithTopMargin:0 bottomMargin:0 leftMargin:0 rightMargin:0];
     }
     return self;
 }
@@ -60,56 +51,38 @@
     return _imageView;
 }
 
--(UIView*)videoView {
-    if (!_videoView) {
-        _videoView = [[UIView alloc] init];
-        [_videoView setBackgroundColor:[UIColor blackColor]];
-        _videoView.hidden = YES;
+-(UIView*)playerView {
+    if (!_playerView) {
+        _playerView = [[PlayerView alloc] init];
+        _playerView.hidden = YES;
     }
-    return _videoView;
+    return _playerView;
 }
 
 - (void) playVideoAtURL:(NSURL*)url {
-    if ([url.lastPathComponent.pathExtension isEqualToString:@"png"]) {
+    if ([imageExtensions containsObject:url.lastPathComponent.pathExtension]) {
         [self.imageView setHidden:NO];
-        [self.videoView setHidden:YES];
-        NSData *imageData = [ImageCache dataForKey:url.absoluteString];
-        [self.imageView setImage:[UIImage imageWithData:imageData]];
-    } else {
-        [self.videoView setHidden:NO];
-        [self.imageView setHidden:YES];
+        [self.playerView setHidden:YES];
+        NSData *imageData = [DataCache dataForKey:url.absoluteString];
+        if (!imageData) {
+            [self.imageView loadImageFromURL:url completionHandler:^(NSData * _Nullable data) {
+                UIImage *img = [UIImage gifWithData:data];
+                [self.imageView setImage:[UIImage imageWithData:data]];
+            }];
+        } else {
+            UIImage *img = [UIImage gifWithData:imageData];
 
-            //self.videoView.frame = self.frame;
+            [self.imageView setImage:[UIImage imageWithData:imageData]];
+        }
+    } else if ([videoExtensions containsObject:url.lastPathComponent.pathExtension]) {
+        [self.playerView setHidden:NO];
+        [self.imageView setHidden:YES];
         AVAsset *asset = [AVAsset assetWithURL:url];
-        NSArray *assetKeys = @[
-            @"playable",
-            @"hasProtectedContent"
-        ];
-        
-        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset automaticallyLoadedAssetKeys:assetKeys];
-        
-        _videoPlayer = [AVPlayer playerWithPlayerItem:playerItem];
-        [_videoPlayer setMuted: YES];
-        [_videoPlayer setActionAtItemEnd: AVPlayerActionAtItemEndNone];
-        
-        _videoPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:_videoPlayer];
-        [_videoPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-        [_videoPlayerLayer setFrame:self.videoView.frame];
-        
-        
-        [self.videoView.layer addSublayer:_videoPlayerLayer];
-        [_videoPlayer play];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(videoPLayerReachedEnd)
-                                                     name:AVPlayerItemDidPlayToEndTimeNotification
-                                                   object:[_videoPlayer currentItem]];
+        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+        [self.playerView playItem:playerItem];
     }
 }
 
-- (void)videoPLayerReachedEnd {
-    [_videoPlayer seekToTime:kCMTimeZero];
-    [_videoPlayer play];
-}
 @end
 
 

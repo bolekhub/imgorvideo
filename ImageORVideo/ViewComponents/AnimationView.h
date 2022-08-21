@@ -6,11 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+@class PlayerView;
 
 @interface AnimationView: UIView
-- (void) playVideoAtURL:(NSURL*)url;
+ - (void) playVideoAtURL:(NSURL*)url;
 @end
-
-NS_ASSUME_NONNULL_END

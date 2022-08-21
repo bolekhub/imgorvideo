@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Network.h"
-#import "ImageCache.h"
+#import "DataCache.h"
 
 @interface Network ()<NSURLSessionDataDelegate>
 
@@ -69,13 +69,13 @@ typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
 #pragma mark cache method
 - (void)cacheDataWithKey:(NSString*)key {
     if (self.cacheResponse) {
-        [ImageCache setData:self.receivedData forKey:key];
+        [DataCache setData:self.receivedData forKey:key];
     }
 }
 
 - (NSData*)fromCacheWithKey:(NSString*)key {
     if (self.cacheResponse) {
-        return [ImageCache dataForKey:key];
+        return [DataCache dataForKey:key];
     }
     return  nil;
 }

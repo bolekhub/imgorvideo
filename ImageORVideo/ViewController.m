@@ -21,9 +21,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSURL *url = [NSURL URLWithString:@"https://youtu.be/J38Yq85ZoyY"];
+    //NSURL *url = [NSURL URLWithString:@"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"];
+    
     //NSURL *url = [NSURL URLWithString:@"https://placehold.jp/150x150.png"];
-
+    
+    NSURL *url = [NSURL URLWithString:@"https://media.giphy.com/media/duzpaTbCUy9Vu/giphy.gif"];
 
     [self.animatedView playVideoAtURL:url];
 }

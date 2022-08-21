@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075DBC2728AF944000FBE148 /* UIImageView+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 075DBC2628AF944000FBE148 /* UIImageView+Network.m */; };
 		0771F6EE28A13E9400CCEDE0 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880841289DD43500C61F49 /* Network.m */; };
 		0771F6F328A3B17400CCEDE0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */; };
+		077C108428B1328E009F5200 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C108328B1328E009F5200 /* PlayerView.m */; };
 		07880805289BB96F00C61F49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880804289BB96F00C61F49 /* AppDelegate.m */; };
 		07880808289BB96F00C61F49 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880807289BB96F00C61F49 /* SceneDelegate.m */; };
 		0788080B289BB96F00C61F49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788080A289BB96F00C61F49 /* ViewController.m */; };
@@ -20,7 +22,7 @@
 		0788082A289BB97400C61F49 /* ImageORVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07880829289BB97400C61F49 /* ImageORVideoUITests.m */; };
 		0788082C289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788082B289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m */; };
 		0788083B289BBA2500C61F49 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788083A289BBA2500C61F49 /* AnimationView.m */; };
-		0788083F289BC08500C61F49 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788083E289BC08500C61F49 /* ImageCache.m */; };
+		0788083F289BC08500C61F49 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0788083E289BC08500C61F49 /* DataCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075DBC2528AF944000FBE148 /* UIImageView+Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Network.h"; sourceTree = "<group>"; };
+		075DBC2628AF944000FBE148 /* UIImageView+Network.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Network.m"; sourceTree = "<group>"; };
 		0771F6F128A3B17200CCEDE0 /* ImageORVideo-Bridging-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageORVideo-Bridging-Swift.h"; sourceTree = "<group>"; };
 		0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		077C108228B1328E009F5200 /* PlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		077C108328B1328E009F5200 /* PlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		07880800289BB96F00C61F49 /* ImageORVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageORVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07880803289BB96F00C61F49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07880804289BB96F00C61F49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,8 +68,8 @@
 		0788082B289BB97400C61F49 /* ImageORVideoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageORVideoUITestsLaunchTests.m; sourceTree = "<group>"; };
 		07880839289BBA2500C61F49 /* AnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
 		0788083A289BBA2500C61F49 /* AnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
-		0788083D289BC08500C61F49 /* ImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
-		0788083E289BC08500C61F49 /* ImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
+		0788083D289BC08500C61F49 /* DataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataCache.h; sourceTree = "<group>"; };
+		0788083E289BC08500C61F49 /* DataCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		07880840289DD43500C61F49 /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		07880841289DD43500C61F49 /* Network.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +104,8 @@
 			children = (
 				0771F6F228A3B17400CCEDE0 /* UIView+Extension.swift */,
 				0771F6F128A3B17200CCEDE0 /* ImageORVideo-Bridging-Swift.h */,
+				075DBC2528AF944000FBE148 /* UIImageView+Network.h */,
+				075DBC2628AF944000FBE148 /* UIImageView+Network.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -172,10 +180,12 @@
 		0788083C289BC05E00C61F49 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0788083D289BC08500C61F49 /* ImageCache.h */,
-				0788083E289BC08500C61F49 /* ImageCache.m */,
+				0788083D289BC08500C61F49 /* DataCache.h */,
+				0788083E289BC08500C61F49 /* DataCache.m */,
 				07880840289DD43500C61F49 /* Network.h */,
 				07880841289DD43500C61F49 /* Network.m */,
+				077C108228B1328E009F5200 /* PlayerView.h */,
+				077C108328B1328E009F5200 /* PlayerView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -312,13 +322,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0771F6EE28A13E9400CCEDE0 /* Network.m in Sources */,
+				075DBC2728AF944000FBE148 /* UIImageView+Network.m in Sources */,
 				0788080B289BB96F00C61F49 /* ViewController.m in Sources */,
 				0771F6F328A3B17400CCEDE0 /* UIView+Extension.swift in Sources */,
 				07880805289BB96F00C61F49 /* AppDelegate.m in Sources */,
 				07880816289BB97300C61F49 /* main.m in Sources */,
 				07880808289BB96F00C61F49 /* SceneDelegate.m in Sources */,
-				0788083F289BC08500C61F49 /* ImageCache.m in Sources */,
+				0788083F289BC08500C61F49 /* DataCache.m in Sources */,
 				0788083B289BBA2500C61F49 /* AnimationView.m in Sources */,
+				077C108428B1328E009F5200 /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
