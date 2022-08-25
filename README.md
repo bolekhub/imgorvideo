@@ -1,2 +1,5 @@
 # imgorvideo
-[![Build Status](https://travis-ci.org/klugjo/hexo-autolinker.svg?branch=master)](https://travis-ci.org/klugjo/hexo-autolinker)
+
+![status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
+![event](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
