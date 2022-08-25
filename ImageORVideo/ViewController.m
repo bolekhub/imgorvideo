@@ -15,15 +15,9 @@
 
 @implementation ViewController
 
-
 - (IBAction)loadUrlAction:(id)sender {
     NSURL *url = [NSURL URLWithString:self.urlTextField.text];
     [self.animatedView showMediaAtURL:url];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 @end

@@ -19,5 +19,6 @@ typedef enum DataFormats: NSUInteger {
 @interface NSData (FILEFORMATS)
 NS_ASSUME_NONNULL_BEGIN
 -(DataFormatsType)format;
+-(NSURL*)fileURL;
 NS_ASSUME_NONNULL_END
 @end

@@ -35,4 +35,18 @@
     }
     return DataFormatUndefined;
 }
+-(NSURL*)fileURL {
+    NSError *resultError;
+    [self writeToURL:[self videoCacheUrl] options:NSDataWritingAtomic error:&resultError];
+    if (resultError == nil) {
+        return [self videoCacheUrl];
+    }
+    return nil;
+}
+
+- (NSURL*)videoCacheUrl {
+    NSURL *cacheDirectory = [[NSFileManager.defaultManager URLsForDirectory: NSCachesDirectory inDomains: NSUserDomainMask] firstObject];
+    NSURL *fullPath = [cacheDirectory URLByAppendingPathComponent:@"video.mp4"];
+    return  fullPath;
+}
 @end

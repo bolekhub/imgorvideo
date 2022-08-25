@@ -8,51 +8,25 @@
 #import "AppDelegate.h"
 #import "DataCache.h"
 #import "Network.h"
-
+#import "ViewController.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
-Network *service;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [DataCache setup];
-    /*
-    [service getFromULR:@"https://placehold.jp/150x150.png" completionHandler:^(NSData * _Nullable data) {
-        UIImage *img = [UIImage imageWithData:data];
-        NSLog(@"finish");
-    }];
-     */
-//    NSTimeInterval time = [[NSDate date] timeIntervalSinceNow];
-//    [self performSelector:@selector(test) withObject:nil afterDelay: time+8];
-        
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:[NSBundle mainBundle]];
+    ViewController *vc = [storyBoard instantiateViewControllerWithIdentifier: @"sb_mainvc"];
+    UIScreen *screen = [UIScreen mainScreen] ;
+
+    _window = [[UIWindow alloc] initWithFrame: screen.bounds ];
+    [self.window setRootViewController:vc];
+    [self.window makeKeyAndVisible];
     return YES;
-}
-
-#pragma mark - UISceneSession lifecycle
-
-
-- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
-}
-
-
-- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-}
-
-- (void)test {
-    [service getFromULR:@"https://placehold.jp/150x150.png" completionHandler:^(NSData * _Nullable data) {
-        UIImage *img = [UIImage imageWithData:data];
-        NSLog(@"finish");
-    }];
 }
 
 @end

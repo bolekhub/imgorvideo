@@ -79,7 +79,8 @@
                 [self toogle:self.playerView visible:YES];
                 [self addSubview:self.activityIndicator];
                 [self.activityIndicator startAnimating];
-                AVAsset *asset = [AVAsset assetWithURL:url];
+                NSURL *cachedVideoURL = [data fileURL];
+                AVAsset *asset = [AVAsset assetWithURL:cachedVideoURL];
                 AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
                 [self.playerView playItem:playerItem];
                 break;
