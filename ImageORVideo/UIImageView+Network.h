@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+NS_ASSUME_NONNULL_BEGIN
 @interface UIImageView (ImageViewNetwork)
-- (void)loadImageFromURL:(NSURL*_Nonnull)url completionHandler:(void(^_Nonnull)(NSData * _Nullable data))completion;
+- (void)loadImageFromURL:(NSURL*)url completionHandler:(void(^)(NSData * data))completion;
+- (void)loadGIFData:( NSData *)data;
 @end
+NS_ASSUME_NONNULL_END

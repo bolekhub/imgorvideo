@@ -12,12 +12,9 @@
 @interface Network ()<NSURLSessionDataDelegate>
 
 typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
-
 @property (nonatomic, strong) NSURLSession *session;
-
-@property (nonatomic, strong) SessionCompletionHandler completion;
-
-@property (nonatomic, strong) NSData *receivedData;
+@property (nonatomic, copy) SessionCompletionHandler completion;
+@property (nonatomic, strong) NSMutableData *receivedData;
 
 @property (nonatomic) BOOL cacheResponse;
 @end
@@ -32,12 +29,14 @@ typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
         _session = [NSURLSession sessionWithConfiguration: config
                                                  delegate:self
                                             delegateQueue:[NSOperationQueue mainQueue]];
+        _receivedData = [NSMutableData data];
         _cacheResponse = cachingResponse;
     }
     return self;
 }
 
-- (void)getFromULR:(NSString*)stringURL completionHandler:(void(^)(NSData * _Nullable data))completion {
+- (void)getFromULR:(NSString*)stringURL completionHandler:(void(^)(NSData *data))completion {
+    self.completion = completion;
     NSData *chachedVersion = [self fromCacheWithKey:stringURL];
     if (chachedVersion) {
         self.completion(chachedVersion);
@@ -51,9 +50,10 @@ typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
 
 #pragma mark NSURLSessionDelegate
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    self.receivedData = data;
+    [data enumerateByteRangesUsingBlock:^(const void * _Nonnull bytes, NSRange byteRange, BOOL * _Nonnull stop) {
+        [self.receivedData appendBytes:bytes length:byteRange.length];
+    }];
 }
-
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (self.receivedData != nil && error == nil) {
@@ -69,7 +69,7 @@ typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
 #pragma mark cache method
 - (void)cacheDataWithKey:(NSString*)key {
     if (self.cacheResponse) {
-        [DataCache setData:self.receivedData forKey:key];
+        [DataCache setData:[NSData dataWithData:self.receivedData] forKey:key];
     }
 }
 
@@ -79,8 +79,6 @@ typedef void (^SessionCompletionHandler)(NSData * _Nullable data);
     }
     return  nil;
 }
-
-#pragma mark Subscribing to app events
 
 @end
 

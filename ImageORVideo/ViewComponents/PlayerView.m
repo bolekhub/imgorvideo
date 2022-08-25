@@ -14,13 +14,12 @@
 @end
 
 @implementation PlayerView
-NSString *contextStatus = @"he";
+NSString *contextStatus = @"player.currentItem";
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:UIColor.blueColor];
-
+        [self setBackgroundColor:UIColor.whiteColor];
     }
     return self;
 }
@@ -74,7 +73,7 @@ NSString *contextStatus = @"he";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ( context == &contextStatus) {
         if ([change[NSKeyValueChangeNewKey] intValue] == AVPlayerStatusReadyToPlay ) {
-            NSLog(@"readyToplay");
+            [self.playerDelegate player:self.player readyToPlay:YES];
         }
     }
 }

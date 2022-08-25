@@ -7,7 +7,8 @@
 
 #import <UIKit/UIKit.h>
 @class PlayerView;
+@protocol PlayerViewEventsProtocol;
 
-@interface AnimationView: UIView
- - (void) playVideoAtURL:(NSURL*)url;
+@interface AnimationView: UIView <PlayerViewEventsProtocol>
+ - (void) showMediaAtURL:(NSURL*)url;
 @end

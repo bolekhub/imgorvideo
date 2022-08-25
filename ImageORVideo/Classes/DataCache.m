@@ -8,16 +8,16 @@
 #import "DataCache.h"
 #import "Network.h"
 #import <UIKit/UIKit.h>
+#import "NSData+NSData_FileFormats.h"
 
 @interface DataCache ()
-
 @property (nonatomic, strong, nonnull) NSCache *cache;
-
 @property (nonatomic, strong, nonnull) NSMutableSet *cacheKeys;
-
+@property (nonatomic, strong, nonnull) NSMapTable<NSString*, NSData*> *cacheMap;
 @end
 
 @implementation DataCache
+    NSString  * const kCacheFileName = @"cache.dat";
 
 + (instancetype) shared {
     static DataCache *sharedInstance = nil;
@@ -43,6 +43,9 @@
                                                  selector:@selector(loadPersistedDataCache)
                                                      name:UIApplicationDidBecomeActiveNotification
                                                    object:nil];
+        _cacheMap = [[NSMapTable alloc] initWithKeyOptions:NSMapTableStrongMemory
+                                              valueOptions:NSMapTableStrongMemory capacity:0];
+        
     }
     return self;
 }
@@ -52,50 +55,39 @@
 }
 
 + (void)setData:(NSData*)data forKey:(NSString*)key {
-    [[DataCache shared].cacheKeys addObject:key];
-    [[DataCache shared].cache setObject:data forKey:key];
+    [[DataCache shared].cacheMap setObject:data forKey:key];
     [[DataCache shared] savecache];
 }
 
 + (NSData*)dataForKey:(NSString*)key {
-   return [[DataCache shared].cache objectForKey:key];
+    return [[DataCache shared].cacheMap objectForKey:key];
 }
 
 - (void)savecache {
     NSError *error;
-    NSMutableDictionary *toDiskCache = [NSMutableDictionary dictionary];
-    
-    for (NSString *key in [DataCache shared].cacheKeys) {
-        NSData *data = [self.cache objectForKey:key];
-        if (data) {
-            [toDiskCache setValue:data forKey:key];
-        }
-    }
-    NSData *packedData = [NSKeyedArchiver archivedDataWithRootObject:toDiskCache requiringSecureCoding:YES error:&error];
-    NSURL *documentsURL = [NSFileManager.defaultManager URLsForDirectory: NSDocumentDirectory inDomains: NSUserDomainMask][0];
-    NSURL *fullPath = [documentsURL URLByAppendingPathComponent:@"cacheData"];
-    [packedData writeToURL:fullPath options:NSDataWritingAtomic error:&error];
-    NSLog(@"saved cache %@", error);
+    NSDictionary *dict = [self.cacheMap dictionaryRepresentation];
+    NSData *packedData = [NSKeyedArchiver archivedDataWithRootObject:dict requiringSecureCoding:YES error:&error];
+    [packedData writeToURL:[self cacheUrl] options:NSDataWritingAtomic error:&error];
 }
 
 - (void)loadPersistedDataCache {
     NSError *error;
+    NSData *archivedData = [NSData dataWithContentsOfURL:[self cacheUrl]];
     
-    NSURL *documentsURL = [NSFileManager.defaultManager URLsForDirectory: NSDocumentDirectory inDomains: NSUserDomainMask][0];
-    NSURL *fullPath = [documentsURL URLByAppendingPathComponent:@"cacheData"];
-    NSData *archivedData = [NSData dataWithContentsOfURL:fullPath];
     NSDictionary *storedDict = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSDictionary class]
                                       fromData:archivedData
                                          error:&error];
-    //put back cache
     [storedDict enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop)  {
         @synchronized (self) {
-            [self.cache setObject:obj forKey:key];
+            [[DataCache shared].cacheMap setObject:obj forKey:key];
         }
     }];
 }
 
-- (void)recoverCache {
+- (NSURL*)cacheUrl {
+    NSURL *cacheDirectory = [[NSFileManager.defaultManager URLsForDirectory: NSCachesDirectory inDomains: NSUserDomainMask] firstObject];
+    NSURL *fullPath = [cacheDirectory URLByAppendingPathComponent:kCacheFileName];
+    return  fullPath;
 }
 
 @end
