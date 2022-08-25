@@ -9,5 +9,5 @@ in an unified component.
 <video width="320" height="240" controls>
   <source src="https://github.com/bolekhub/imgorvideo/blob/main/Untitled.mov" type="video/mp4">
 </video>
-![example](Untitled.mov)
+![example](https://github.com/bolekhub/imgorvideo/blob/main/Untitled.mov)
 
