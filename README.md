@@ -1,5 +1,3 @@
 # imgorvideo
 
-![status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
-
-![event](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
+[![Xcode - Build and Analyze](https://github.com/bolekhub/imgorvideo/actions/workflows/objective-c-xcode.yml/badge.svg?branch=main)](https://github.com/bolekhub/imgorvideo/actions/workflows/objective-c-xcode.yml)
